@@ -1,0 +1,61 @@
+mysql> create table market(
+    -> cid int primarykey,
+    -> cname varchar(20),
+    -> city varchar(30),
+    -> phone bigint);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'primarykey,
+cname varchar(20),
+city varchar(30),
+phone bigint)' at line 2
+mysql> create table market(
+    -> cid int primary key,
+    -> cname varchar(20),
+    -> city varchar(30),
+    -> phone bigint);
+Query OK, 0 rows affected (3.10 sec)
+
+mysql> decs market;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'decs market' at line 1
+mysql> desc market;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| cid   | int         | NO   | PRI | NULL    |       |
+| cname | varchar(20) | YES  |     | NULL    |       |
+| city  | varchar(30) | YES  |     | NULL    |       |
+| phone | bigint      | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.34 sec)
+
+mysql> insert market values(1,"sharma","dgl",12345678);
+Query OK, 1 row affected (0.61 sec)
+
+mysql> select * from market;
++-----+--------+------+----------+
+| cid | cname  | city | phone    |
++-----+--------+------+----------+
+|   1 | sharma | dgl  | 12345678 |
++-----+--------+------+----------+
+1 row in set (0.02 sec)
+
+mysql> insert market values(2,"arun","dgl",7682672826),
+    -> (3,"krishna","dgl",34563728),
+    -> (4,"karthick","dgl"1324367),
+    -> (5,"choco","dgl",235365367);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1324367),
+(5,"choco","dgl",235365367)' at line 3
+mysql> insert market values(2,"arun","dgl",7682672826),
+    -> (4,"karthick","dgl"1324367),
+    -> (3,"krishna","dgl",34563728);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1324367),
+(3,"krishna","dgl",34563728)' at line 2
+mysql> insert market values(2,"arun","dgl",7682672826),
+    -> insert market values(3,""choco,"dgl",7682672826),
+    -> insert market values(4,""krish,"dgl",7682672826);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'insert market values(3,""choco,"dgl",7682672826),
+insert market values(4,""krish' at line 2
+mysql> insert market values(2,"arun","dgl",7682672826),
+    -> insert market values(3,""choco,"dgl",7682672826),
+    -> insert market values(4,""krish","dgl",7682672826);
+  
+
