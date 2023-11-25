@@ -1,3 +1,5 @@
+SQL 
+
 mysql> create table market(
     -> cid int primarykey,
     -> cname varchar(20),
